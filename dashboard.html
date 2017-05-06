@@ -1,0 +1,45 @@
+<div class="col-sm-9" ng-controller="dashboardController">
+<div class="col-sm-6 profile-dashboard">
+<p><span class="btn btn-block btn-info addbutton" ng-click="openmodal()">+ Add New</span>
+	UserName's DashBoard <br/>
+	Click "Add" to create a new tax return.
+
+</p>
+
+</div>
+<div class="dashboard-grid table-responsive col-sm-12">
+<table class="table">
+<tr>
+<th><div>Year</div></th>
+<th><div>Filing Status</div></th>
+<th><div>ITR-V Status</div></th>
+<th><div>Refund Status</div></th>
+</tr>
+<tr ng-repeat="item in returnshistory.returns">
+<td>{{item.year}}</td>
+<td>{{item.fillingStatus}}</td>
+<td>{{item.ITRVStatus}}</td>
+<td>{{item.refundStatus}}</td>
+</tr>
+
+</table>
+<div modal-show="showDialog" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>One fine body&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+</div>
+</div>
+

@@ -1,0 +1,207 @@
+<div class="col-sm-9" ng-controller="taxreturninfoController">
+
+
+</div>
+<div class="col-sm-9">
+<form class="form-horizontal">
+<ul class="nav nav-tabs">
+    <li ng-repeat="step in steps" ng-class="{active: $index==getCurrentStepIndex()}">
+      <a href="javascript:void(0)" ng-click="goToStep($index)">{{step}}</a>
+    </li>
+  </ul>
+  <div ng-switch on="selection">
+  <div ng-switch-when="Step 1: Personal Info">
+  <div class="spacer"></div>
+  <div class="form-group">
+        <label for="title" class="control-label col-sm-2">Title</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="title" placeholder="Title"  ng-model="formData.title">
+        </div>
+    </div>
+     <div class="form-group">
+        <label for="firstName" class="control-label col-sm-2">First Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="firstName" placeholder="First Name"  ng-model="formData.firstName">
+        </div>
+    </div>
+     <div class="form-group">
+        <label for="title" class="control-label col-sm-2">Family Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="familyName" placeholder="Family Name"  ng-model="formData.familyName">
+        </div>
+    </div>
+<div class="form-group">
+        <label class="col-sm-6 control-label">Has any part of your name changed since completing your last tax return?</label>
+        <div class="col-sm-2">
+            <label class="radio-inline"> <input type="radio" ng-model="formData.isNameChanged"  class="control-label" value="Yes" >Yes </label>
+            <label class="radio-inline"> <input type="radio" ng-model="formData.isNameChanged"  class="control-label" value="No" checked> No</label>              
+        </div>
+    </div>
+<div class="form-group">
+        <label class="col-sm-2 control-label">Sex</label>
+        <div class="col-sm-8">
+            <label class="radio-inline">  <input type="radio"  ng-model="formData.male" value="Male" name = "sex" > Male </label>
+            <label class="radio-inline">     <input type="radio"  ng-model="formData.female" value="Female" name = "sex">Female </label>              
+        </div>
+    </div>
+
+   <div class="form-group" ng-init="formData.isMarried = false">
+    <label for="status"  class="col-sm-2 control-label">Are you married?</label>
+     <div class="col-sm-2">
+            <label class="radio-inline"> <input type="radio" ng-model="formData.isMarried" ng-value="true" name = "maritalstatus" >Yes </label>
+            <label class="radio-inline"><input type="radio" ng-model="formData.isMarried" ng-value="false" name = "maritalstatus" checked> No</label>              
+        </div> 
+        
+</div> 
+
+<div ng-show="formData.isMarried == true">
+<div class="form-group">
+    <label for="title" class="control-label col-sm-2">Your spouse's First Name</label>
+      <div class="col-sm-6">
+    <input type="text" class="form-control" name="name" ng-model="formData.spouseFirstName">
+    </div>
+</div>
+<div class="form-group">
+    <label for="firstname" class="control-label col-sm-2">Your spouse's Last Name</label>
+      <div class="col-sm-6">
+    <input type="text" class="form-control" name="name" ng-model="formData.spouseLastName">
+    </div>
+</div>
+<div class="form-group">
+
+<label class="col-sm-2 control-label">Your spouse's gender</label>
+        <div class="col-sm-8">
+        <label class="radio-inline">    <input type="radio" ng-model="formData.isSpouseMale" value="Male" name="spouseSex"  >Male </label>
+        <label class="radio-inline">  <input type="radio" ng-model="formData.isSpouseFemale" value="Female" name="spouseSex" >Female </label>              
+        <label class="radio-inline">  <input type="radio" ng-model="formData.isSpouseIndeterminate" value="Indeterminate" name="spouseSex" >Indeterminate </label>   
+        </div>
+
+</div>
+</div>
+</div>
+ <!-- Second Step -->
+    <div ng-switch-when="Step 2: Address & Bank Info">
+     <div class="spacer"><h3> Address Details</h3>
+</div>
+       <div class="form-group">
+    <label for="title" class="control-label col-sm-2">Postal</label>
+        <div class="col-sm-6">
+    <input type="text" class="form-control" name="name" ng-model="formData.postal">
+    </div>
+</div>
+<div class="form-group">
+    <label for="firstname"  class="control-label col-sm-2">Home</label>
+    <div class="col-sm-6">
+    <input type="text" class="form-control" name="name" ng-model="formData.home">
+    </div>
+</div>
+<div class="form-group">
+    <label for="isAddressChanged" class="col-sm-6 control-label">Has your postal address changed since last return lodged?</label>
+    <div class="col-sm-3">
+    <label class="radio-inline">    <input type="radio" ng-model="formData.isAddressChanged" value="Yes" checked> Yes </label>
+ <label class="radio-inline">       <input type="radio" ng-model="formData.isAddressChanged" value="No"> No </label>
+        
+    </div>
+</div>
+<h3> Bank Details</h3>
+  <div class="form-group">
+    <label for="accountName" class="col-sm-2 control-label">Account Name</label>
+     <div class="col-sm-6">
+    <input type="text" class="form-control" name="name" ng-model="formData.accountName">
+    </div>
+</div>
+<div class="form-group">
+    <label for="firstname" class="col-sm-2 control-label">BSB Number</label>
+     <div class="col-sm-6">
+    <input type="text" class="form-control" name="name" ng-model="formData.bsbNumber">
+    </div>
+</div>
+<div class="form-group">
+    <label for="firstname" class="col-sm-2 control-label">Account Number</label>
+     <div class="col-sm-6">
+    <input type="text" class="form-control" name="name" ng-model="formData.accountnNumber">
+    </div>
+</div>
+<div class="form-group" >
+    <label for="firstname" class="col-sm-2 control-label">Name of the bank</label>
+     <div class="col-sm-6">
+    <input type="text" class="form-control" name="name" ng-model="formData.bankname">
+    </div>
+</div>
+<h3> Australian Residency details</h3>
+<div class="form-group" ng-init="formData.isResident = true">
+    <label for="residency" class="col-sm-4 control-label">Are you an Australian resident?</label>
+    <div class="col-sm-5">
+    <label class="radio-inline">     <input type="radio" ng-model="formData.isResident" ng-value="true" name = "isResident" > Yes </label>
+ <label class="radio-inline">       <input type="radio" ng-model="formData.isResident" ng-value="false" name = "isResident"> No </label>
+        
+    </div>
+           
+</div>
+
+    </div>
+
+    <!-- Third Step -->
+    <div ng-switch-when="Step 3: Income Activity">
+    <div class="spacer"><h3>Tell us about your income </h3></div>
+
+      <div class="form-group">
+        <label for="income" class="col-sm-12  incomeactivity">
+          Did you earn Salary or wages, Allowances, Director's fees, Employment termination payments (Salary and wages includes commissions, bonuses, income from part-time work, parental leave) ? 
+        </label>
+          <div class="col-sm-4">
+                <label class="radio-inline">     <input type="radio" ng-model="formData.earnSalary" ng-value="true" name = "earnSalary" > Yes </label>
+                <label class="radio-inline">       <input type="radio" ng-model="formData.earnSalary" ng-value="false" name = "earnSalary"> No </label>        
+          </div>
+      </div>
+      <div class="form-group">
+            <label for="income" class="col-sm-12  incomeactivity">Did you earn rental income or had rental property available for rent ?
+            </label>
+        <div class="col-sm-4">
+          <label class="radio-inline">     <input type="radio" ng-model="formData.rentalIncome" ng-value="true" name = "rentalIncome" > Yes </label>
+          <label class="radio-inline">        <input type="radio" ng-model="formData.rentalIncome" ng-value="false" name = "rentalIncome"> No </label>        
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="income" class="col-sm-12  incomeactivity">Did you earn bank interest income / dividend income ?</label>
+          <div class="col-sm-4">
+            <label class="radio-inline">          <input type="radio" ng-model="formData.interestIncome" ng-value="true" name = "interestIncome" >Yes </label>
+            <label class="radio-inline">          <input type="radio" ng-model="formData.interestIncome" ng-value="true" name = "interestIncome" >No </label>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="income" class="col-sm-12  incomeactivity">Did you carry on a business as a Sole Trader or receive income from Uber or any other business activity ?
+        </label>
+          <div class="col-sm-4">
+            <label class="radio-inline">          <input type="radio" ng-model="formData.businessIncome" ng-value="true" name = "businessIncome" >Yes </label>
+            <label class="radio-inline">             <input type="radio" ng-model="formData.businessIncome" ng-value="false" name = "businessIncome">No </label>        
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="income" class="col-sm-12  incomeactivity">Did you sell any of your investments/rental property ?</label>
+          <div class="col-sm-4">
+            <label class="radio-inline">          <input type="radio" ng-model="formData.investmentIncome" ng-value="true" name = "investmentIncome">Yes </label>
+            <label class="radio-inline">              <input type="radio" ng-model="formData.investmentIncome" ng-value="false" name = "investmentIncome">No </label>
+          </div>
+      </div>   
+  </div>
+      </div>
+    
+ <div class="clearfix"></div>
+  <ul class="pager pull-left">
+    <li class="" ng-class="{disabled: !hasPreviousStep()}">
+      <a href="javascript:void(0);" ng-click="decrementStep()">&larr; Previous Step</a>
+    </li>
+    <li class="" ng-class="{disabled: !hasNextStep()}">
+      <a href="javascript:void(0);" ng-click="incrementStep()">Next Step &rarr;</a>
+    </li>
+  </ul>
+  <div class="pull-right"><button style="margin:20px 0;" class="btn btn-success" ng-click="processData()">Confirm and Register</button></div>
+  <div class="clearfix"></div>
+
+</form>
+
+
+</div>
+</div>
+
